@@ -22,12 +22,12 @@ M=8#num_of_rows
 N=8#num_of_rows
 
 #init input
-hyperperiod,num_of_tasks,edges,comp_cost=init('./task graph/N12_autocor.tgff')
+hyperperiod,num_of_tasks,edges,comp_cost=init('N12_autocor.tgff')
 adj_matrix,total_needSend,total_needReceive,execution=Get_detailed_data(num_of_tasks,edges,comp_cost)
-weight_a,weight_b=Get_weight(total_needSend,execution,c=6)
+weight_a,weight_b=Get_weight(total_needSend,execution)
 
-#computation_ability=CVB_method(execution=execution[1:],V_machine=0.5,num_of_rows=N)
-computation_ability=read_NoC('./NoC description/N12_autocor_Mesh8x8_NoCdescription.txt')
+computation_ability=CVB_method(execution=execution[1:],V_machine=0.25,num_of_rows=N)
+#computation_ability=read_NoC('./NoC description/N12_autocor_Mesh8x8_NoCdescription.txt')
 
 
 #M*N mesh network, task placed on (i,j) PE
